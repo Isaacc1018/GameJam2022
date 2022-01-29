@@ -1,26 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Shadow.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 2 )
 
 [node name="Platform2D" type="Node2D"]
+position = Vector2( 517, 322 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Panel" type="Panel" parent="StaticBody2D"]
-margin_left = -5.29529
-margin_top = 316.418
-margin_right = 1026.7
-margin_bottom = 323.418
+margin_left = -511.753
+margin_top = -4.11606
+margin_right = 520.247
+margin_bottom = 2.88394
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 509.117, 319.612 )
+position = Vector2( 2.51486, -1.4736 )
 shape = SubResource( 1 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 156.256, 253.544 )
+position = Vector2( 0, -38 )
+
+[node name="KinematicBody2D2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0.840942, 30.4319 )
