@@ -1,4 +1,4 @@
-extends Sprite
+extends AnimatedSprite
 
 var player = null
 var binded= false
