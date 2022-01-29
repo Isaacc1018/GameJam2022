@@ -28,10 +28,12 @@ shape = SubResource( 1 )
 position = Vector2( -459.129, -31.2729 )
 
 [node name="P2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 402.703, -55.3271 )
+position = Vector2( 420.662, -35.1227 )
 
 [node name="P1Shadow" parent="." instance=ExtResource( 2 )]
-position = Vector2( -454.084, 32.1136 )
+position = Vector2( -311.969, 57.0388 )
+offset = Vector2( -147.458, 29.5212 )
 
 [node name="P2Shadow" parent="." instance=ExtResource( 2 )]
-position = Vector2( 405.085, 24.5865 )
+position = Vector2( 422.357, -3.57419 )
+offset = Vector2( -0.457886, -32.2141 )
