@@ -7,5 +7,15 @@ extents = Vector2( 512, 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
+[node name="Panel" type="Panel" parent="StaticBody2D"]
+margin_left = -5.29529
+margin_top = 316.418
+margin_right = 1026.7
+margin_bottom = 323.418
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 509.117, 319.612 )
 shape = SubResource( 1 )
