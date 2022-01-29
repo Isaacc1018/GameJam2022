@@ -9,10 +9,9 @@ func _ready():
 
 
 
-func _physics_process(_elta):
-	if Input.is_action_just_pressed("Flip"):
-		scale.y = scale.y * -1
+func _physics_process(_delta):
 	if player != null:
+		scale.y =    player.scale.y * -1
 		position.x = player.position.x
 		position.y = player.position.y * -1
 		
