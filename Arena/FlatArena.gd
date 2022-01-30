@@ -17,8 +17,8 @@ func _ready():
 
 
 func _on_P1_health_zero():
-	pass # Replace with function body.
+	$WinLabel.text = "PLAYER TWO WINS!"
 
 
 func _on_P2_health_zero():
-	pass # Replace with function body.
+	$WinLabel.text = "PLAYER ONE WINS!"

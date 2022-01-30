@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Shadow.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Arena/FlatArena.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Fonts/Staatliches/Staatliches-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Arena/FlatArena.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 2 )
@@ -10,9 +11,13 @@ extents = Vector2( 512, 2 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 301.25 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 72
+font_data = ExtResource( 3 )
+
 [node name="Platform2D" type="Node2D"]
 position = Vector2( 512, 300 )
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -120,6 +125,16 @@ position = Vector2( 512, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right wall"]
 shape = SubResource( 2 )
+
+[node name="WinLabel" type="Label" parent="."]
+margin_left = -220.576
+margin_top = -265.799
+margin_right = 223.424
+margin_bottom = -174.799
+custom_fonts/font = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="health_zero" from="P1" to="." method="_on_P1_health_zero"]
 [connection signal="health_zero" from="P2" to="." method="_on_P2_health_zero"]

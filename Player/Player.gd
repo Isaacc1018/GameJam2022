@@ -1,5 +1,5 @@
 extends KinematicBody2D
-signal gameOver
+
 
 var gravity = 475
 const moveSpeed = 175
@@ -9,7 +9,7 @@ var health = 100
 var direction = 1
 var stunTimer = Timer.new()
 
-signal health_zero
+signal health_zero()
 
 
 func _ready():
@@ -87,7 +87,7 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity,Vector2.UP)
 	if health <= 0:
-		emit_signal("health_zero", name)
+		emit_signal("health_zero")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -95,18 +95,11 @@ func _physics_process(delta):
 
 func _on_PunchHitBox_body_entered(body):
 	if body.get_class() == "KinematicBody2D":
-		if body.health > 5:
 			body.health -= 5
-			body.velocity.x += 500*direction
-		else:
-			emit_signal("gameOver")
-			
+			body.velocity.x += 500*direction	
 
 
 func _on_KickHitBox_body_entered(body):
 	if body.get_class() == "KinematicBody2D":
-		if body.health > 10:
 			body.health -= 10
 			body.velocity.x += 1850*direction
-		else:
-			emit_signal("gameOver")
