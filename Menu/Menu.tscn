@@ -1,9 +1,78 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Fonts/Staatliches/Staatliches-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menu/Menu.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 56
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = ExtResource( 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.005
 anchor_bottom = 1.0
 margin_right = -0.119995
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.993
+margin_left = 2.36365
+margin_right = 11.3636
+margin_bottom = 0.199951
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -108.5
+margin_top = 160.0
+margin_right = 108.5
+margin_bottom = 231.0
+custom_fonts/font = SubResource( 1 )
+text = "DUEL-ALITY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 432.221
+margin_top = 232.087
+margin_right = -426.779
+margin_bottom = -297.913
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+text = "PLAY"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Quit" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 432.221
+margin_top = 299.087
+margin_right = -426.779
+margin_bottom = -230.913
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+text = "Quit"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
