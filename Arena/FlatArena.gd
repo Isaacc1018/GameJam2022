@@ -18,7 +18,23 @@ func _ready():
 
 func _on_P1_health_zero():
 	$WinLabel.text = "PLAYER TWO WINS!"
+	var t = Timer.new()
+	t.set_wait_time(5)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	t.queue_free()
+	get_tree().reload_current_scene()
 
 
 func _on_P2_health_zero():
 	$WinLabel.text = "PLAYER ONE WINS!"
+	var t = Timer.new()
+	t.set_wait_time(5)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	t.queue_free()
+	get_tree().reload_current_scene()

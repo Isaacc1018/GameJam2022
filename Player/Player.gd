@@ -9,7 +9,7 @@ var health = 100
 var direction = 1
 var stunTimer = Timer.new()
 
-signal health_zero()
+signal health_zero
 
 
 func _ready():
@@ -95,11 +95,11 @@ func _physics_process(delta):
 
 func _on_PunchHitBox_body_entered(body):
 	if body.get_class() == "KinematicBody2D":
-			body.health -= 5
+			body.health = clamp(body.health - 5, 0 , 100)
 			body.velocity.x += 500*direction	
 
 
 func _on_KickHitBox_body_entered(body):
 	if body.get_class() == "KinematicBody2D":
-			body.health -= 10
+			body.health = clamp(body.health - 10, 0 , 100)
 			body.velocity.x += 1850*direction
