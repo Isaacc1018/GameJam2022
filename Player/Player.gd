@@ -69,7 +69,7 @@ func get_input():
 		$AnimatedSprite.frame=2
 		$KickHitBox/CollisionShape2D.disabled = false
 		var kt = Timer.new()
-		kt.set_wait_time(1.5)
+		kt.set_wait_time(.75)
 		kt.set_one_shot(true)
 		self.add_child(kt)
 		kt.start()
@@ -96,10 +96,10 @@ func _physics_process(delta):
 func _on_PunchHitBox_body_entered(body):
 	if body.get_class() == "KinematicBody2D" and health > 0:
 			body.health = clamp(body.health - 5, 0 , 100)
-			body.velocity.x += 500*direction	
+			body.velocity.x += 900*direction	
 
 
 func _on_KickHitBox_body_entered(body):
 	if body.get_class() == "KinematicBody2D" and health > 0:
 			body.health = clamp(body.health - 10, 0 , 100)
-			body.velocity.x += 1850*direction
+			body.velocity.x += 2850*direction
