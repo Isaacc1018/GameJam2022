@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://guysUpdated.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Fonts/Staatliches/Staatliches-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.23448, 20.185 )
@@ -41,7 +42,12 @@ animations = [ {
 
 [sub_resource type="CircleShape2D" id=8]
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="DynamicFont" id=9]
+size = 20
+outline_size = 1
+font_data = ExtResource( 3 )
+
+[sub_resource type="CapsuleShape2D" id=10]
 height = 8.01813
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
@@ -65,10 +71,13 @@ shape = SubResource( 8 )
 disabled = true
 
 [node name="Label" type="Label" parent="."]
-margin_left = -18.2688
-margin_top = -36.5377
-margin_right = 21.7312
-margin_bottom = -22.5377
+margin_left = -12.0
+margin_top = -49.0
+margin_right = 13.0
+margin_bottom = -24.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "100"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,7 +87,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KickHitBox"]
 position = Vector2( 26.4285, -1.65178 )
 rotation = 1.5708
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 disabled = true
 
 [connection signal="body_entered" from="PunchHitBox" to="." method="_on_PunchHitBox_body_entered"]

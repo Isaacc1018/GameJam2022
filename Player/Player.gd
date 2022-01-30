@@ -1,11 +1,10 @@
 extends KinematicBody2D
+signal gameOver
 
-var gravity = 400
+var gravity = 475
 const moveSpeed = 175
-var jumpStr = -250
+var jumpStr = -275
 var velocity = Vector2.ZERO
-var P1_Health = 100
-var P2_Health = 100
 var health = 100
 var direction = 1
 
@@ -84,10 +83,18 @@ func _physics_process(delta):
 
 func _on_PunchHitBox_body_entered(body):
 	if body.get_class() == "KinematicBody2D":
-		body.health -= 5
-		body.velocity.x += 500*direction
+		if body.health > 5:
+			body.health -= 5
+			body.velocity.x += 500*direction
+		else:
+			emit_signal("gameOver")
+			
 
 
 func _on_KickHitBox_body_entered(body):
-	body.health -= 10
-	body.velocity.x += 1850*direction
+	if body.get_class() == "KinematicBody2D":
+		if body.health > 10:
+			body.health -= 10
+			body.velocity.x += 1850*direction
+		else:
+			emit_signal("gameOver")
