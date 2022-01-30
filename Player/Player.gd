@@ -10,6 +10,8 @@ var health = 100
 var direction = 1
 var stunTimer = Timer.new()
 
+signal health_zero
+
 
 func _ready():
 	stunTimer.set_one_shot(true)
@@ -85,9 +87,8 @@ func _physics_process(delta):
 	get_input()
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity,Vector2.UP)
-	#if Input.is_action_just_pressed(name+ "_Jump"):
-	#	if is_on_floor() || is_on_ceiling():
-	#		velocity.y = jumpStr
+	if health <= 0:
+		emit_signal("health_zero", name)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
