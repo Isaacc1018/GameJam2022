@@ -1,6 +1,6 @@
 extends AnimatedSprite
 
-onready var player = get_node("../" + name.substr(0,2))
+#onready var player = get_node("../" + name.substr(0,2))
 var binded= false
 
 
@@ -10,6 +10,7 @@ func _ready():
 
 
 func _physics_process(_delta):
+	var player = get_node("../" + name.substr(0,2))
 	if player != null:
 		scale.y =    player.scale.y * -1
 		position.x = player.position.x
