@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Fonts/Staatliches/Staatliches-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu/Menu.gd" type="Script" id=2]
@@ -8,6 +8,10 @@ size = 56
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 42
 font_data = ExtResource( 1 )
 
@@ -75,6 +79,21 @@ text = "Quit"
 flat = true
 __meta__ = {
 "_edit_lock_": true
+}
+
+[node name="Attribution" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -276.112
+margin_top = -61.0436
+margin_right = 297.888
+margin_bottom = -8.04358
+custom_fonts/font = SubResource( 3 )
+text = "BY:  Ethan Forrest and Isaac carcare"
+__meta__ = {
+"_edit_use_anchors_": false
 }
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
