@@ -8,9 +8,12 @@ var P1_Health = 100
 var P2_Health = 100
 var health = 100
 var direction = 1
+var stunTimer = Timer.new()
 
 
 func _ready():
+	stunTimer.set_one_shot(true)
+	stunTimer.set_wait_time(0.2)
 	if scale.y == -1:
 		gravity = gravity * -1
 		jumpStr = jumpStr * -1
@@ -18,6 +21,9 @@ func _ready():
 
 func get_input():
 	velocity.x = floor(velocity.x/2)
+	if !stunTimer.is_stopped():
+		print("stunned")
+		return
 	if Input.is_action_pressed(name+ "_Right"):
 		velocity.x += moveSpeed
 		$AnimatedSprite.scale.x = 1
@@ -67,16 +73,18 @@ func get_input():
 		kt.queue_free()
 		$AnimatedSprite.frame=0
 		$KickHitBox/CollisionShape2D.disabled = true
-			
+	if Input.is_action_just_pressed(name+ "_Jump"):
+		if is_on_floor() || is_on_ceiling():
+			velocity.y = jumpStr
 
 func _physics_process(delta):
 	$Label.text = String(health)
 	get_input()
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity,Vector2.UP)
-	if Input.is_action_just_pressed(name+ "_Jump"):
-		if is_on_floor() || is_on_ceiling():
-			velocity.y = jumpStr
+	#if Input.is_action_just_pressed(name+ "_Jump"):
+	#	if is_on_floor() || is_on_ceiling():
+	#		velocity.y = jumpStr
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -89,5 +97,7 @@ func _on_PunchHitBox_body_entered(body):
 
 
 func _on_KickHitBox_body_entered(body):
-	body.health -= 10
-	body.velocity.x += 1850*direction
+	if body.get_class() == "KinematicBody2D":
+		body.health -= 10
+		body.velocity.x += 1850*direction
+		stunTimer.start(0.2)
