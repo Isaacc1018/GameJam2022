@@ -11,6 +11,9 @@ var direction = 1
 
 
 func _ready():
+	if scale.y == -1:
+		gravity = gravity * -1
+		jumpStr = jumpStr * -1
 	pass
 
 func get_input():
@@ -80,8 +83,9 @@ func _physics_process(delta):
 
 
 func _on_PunchHitBox_body_entered(body):
-	body.health -= 5
-	body.velocity.x += 500*direction
+	if body.get_class() == "KinematicBody2D":
+		body.health -= 5
+		body.velocity.x += 500*direction
 
 
 func _on_KickHitBox_body_entered(body):

@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Shadow.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 2 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 301.25 )
 
 [node name="Platform2D" type="Node2D"]
 position = Vector2( 512, 300 )
@@ -24,14 +27,95 @@ __meta__ = {
 scale = Vector2( 1, 2.5 )
 shape = SubResource( 1 )
 
+[node name="upper left platform" type="StaticBody2D" parent="."]
+position = Vector2( -256, -72 )
+scale = Vector2( 0.2, 1 )
+
+[node name="Panel" type="Panel" parent="upper left platform"]
+margin_left = -512.0
+margin_top = -4.0
+margin_right = 512.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="upper left platform"]
+scale = Vector2( 1, 2.5 )
+shape = SubResource( 1 )
+
+[node name="lower right platform" type="StaticBody2D" parent="."]
+position = Vector2( 256, 72 )
+scale = Vector2( 0.2, 1 )
+
+[node name="Panel" type="Panel" parent="lower right platform"]
+margin_left = -512.0
+margin_top = -4.0
+margin_right = 512.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lower right platform"]
+scale = Vector2( 1, 2.5 )
+shape = SubResource( 1 )
+
+[node name="upper center platform" type="StaticBody2D" parent="."]
+position = Vector2( 0, -128 )
+scale = Vector2( 0.1, 1 )
+
+[node name="Panel" type="Panel" parent="upper center platform"]
+margin_left = -512.0
+margin_top = -4.0
+margin_right = 512.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="upper center platform"]
+scale = Vector2( 1, 2.5 )
+shape = SubResource( 1 )
+
+[node name="lower center platform" type="StaticBody2D" parent="."]
+position = Vector2( 0, 128 )
+scale = Vector2( 0.1, 1 )
+
+[node name="Panel" type="Panel" parent="lower center platform"]
+margin_left = -512.0
+margin_top = -4.0
+margin_right = 512.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lower center platform"]
+scale = Vector2( 1, 2.5 )
+shape = SubResource( 1 )
+
 [node name="P1" parent="." instance=ExtResource( 1 )]
-position = Vector2( -459.129, -31.2729 )
+position = Vector2( -450, -32 )
 
 [node name="P2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 420.662, -35.1227 )
+position = Vector2( 450, 32 )
+scale = Vector2( -1, -1 )
 
 [node name="P1Shadow" parent="." instance=ExtResource( 2 )]
 position = Vector2( -311.969, 57.0388 )
 
 [node name="P2Shadow" parent="." instance=ExtResource( 2 )]
-position = Vector2( 422.357, 32 )
+position = Vector2( 422.357, -32 )
+
+[node name="left wall" type="StaticBody2D" parent="."]
+position = Vector2( -512, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left wall"]
+shape = SubResource( 2 )
+
+[node name="right wall" type="StaticBody2D" parent="."]
+position = Vector2( 512, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right wall"]
+shape = SubResource( 2 )
