@@ -100,7 +100,6 @@ position = Vector2( -450, -32 )
 
 [node name="P2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 450, 32 )
-scale = Vector2( -1, -1 )
 
 [node name="P1Shadow" parent="." instance=ExtResource( 2 )]
 position = Vector2( -311.969, 57.0388 )

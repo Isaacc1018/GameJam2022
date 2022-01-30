@@ -14,9 +14,11 @@ var stunTimer = Timer.new()
 func _ready():
 	stunTimer.set_one_shot(true)
 	stunTimer.set_wait_time(0.2)
-	if scale.y == -1:
+	if name == "P2":
 		gravity = gravity * -1
 		jumpStr = jumpStr * -1
+		$AnimatedSprite.scale.y = -1
+		$BodyHitBox.scale.y = -1
 	pass
 
 func get_input():
@@ -40,7 +42,8 @@ func get_input():
 		gravity = gravity * -1
 		jumpStr = jumpStr * -1
 		position.y=position.y*-1
-		scale.y = scale.y*-1
+		$AnimatedSprite.scale.y = $AnimatedSprite.scale.y*-1
+		$BodyHitBox.scale.y = $AnimatedSprite.scale.y
 	if Input.is_action_just_pressed(name+ "_Punch"):
 		$AnimatedSprite.frame=1
 		$PunchHitBox/CollisionShape2D.disabled = false
